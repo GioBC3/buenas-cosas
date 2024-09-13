@@ -1,0 +1,37 @@
+backend:
+    name: git-gateway
+    branch: main # O la rama principal de tu repositorio
+
+media_folder: 'static/img' # Carpeta donde se guardarán las imágenes subidas
+public_folder: '/img' # Ruta pública para acceder a las imágenes
+
+collections:
+    - name: 'pages'
+      label: 'Pages'
+      folder: 'content/pages'
+      create: true
+      slug: '{{slug}}'
+      fields:
+          - { label: 'Nombre de la Página', name: 'title', widget: 'string' }
+          - { label: 'URI', name: 'uri', widget: 'string', hint: 'Ejemplo: /about-us' }
+          - { label: 'Layout', name: 'layout', widget: 'select', options: ['default', 'custom'] }
+          - label: 'Contenido'
+            name: 'content'
+            widget: 'list'
+            types:
+                - label: 'Navbar'
+                  name: 'navbar'
+                  widget: 'object'
+                  fields:
+                      # Campos del navbar (como se definió anteriormente)
+                - label: 'Footer'
+                  name: 'footer'
+                  widget: 'object'
+                  fields:
+                      # Campos del footer (como se definió anteriormente)
+                - label: 'Contenido Personalizado'
+                  name: 'custom_content'
+                  widget: 'object'
+                  fields:
+                      - { label: 'Título', name: 'title', widget: 'string' }
+                      - { label: 'Cuerpo', name: 'body', widget: 'markdown' }
